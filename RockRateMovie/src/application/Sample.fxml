@@ -1,23 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.Bloom?>
-<?import javafx.scene.effect.ColorInput?>
 <?import javafx.scene.effect.GaussianBlur?>
 <?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.effect.MotionBlur?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.paint.LinearGradient?>
-<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="login_page" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<Pane fx:id="login_page" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SampleController">
    <children>
       <ImageView disable="true" fitHeight="400.0" fitWidth="600.0" layoutY="1.0" pickOnBounds="true">
          <image>
@@ -46,43 +44,30 @@
             <GaussianBlur radius="3.86" />
          </effect>
       </Label>
-      <Label blendMode="LIGHTEN" layoutX="70.0" layoutY="50.0" text="RockRateMovie" textFill="#ffbf00" textOverrun="LEADING_ELLIPSIS">
+      <Line endX="417.0" endY="177.0" layoutY="8.0" startX="215.0" startY="177.0" stroke="#ffbf00" />
+      <Line endX="417.0" endY="177.0" layoutY="44.0" startX="215.0" startY="177.0" stroke="#ffbf00" />
+      <Button fx:id="LoginButton" layoutX="250.0" layoutY="270.0" mnemonicParsing="false" onAction="#loginButtonOnAction" prefHeight="25.0" prefWidth="120.0" text="Login">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <PasswordField alignment="CENTER" layoutX="214.0" layoutY="196.0" prefHeight="25.0" prefWidth="206.0" promptText="Password" />
+      <TextField alignment="CENTER" layoutX="214.0" layoutY="161.0" prefHeight="27.0" prefWidth="206.0" promptText="Enter Username">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </TextField>
+      <Button fx:id="LoginButton1" layoutX="250.0" layoutY="313.0" mnemonicParsing="false" onAction="#loginButtonOnAction" prefHeight="25.0" prefWidth="120.0" text="Register">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Label blendMode="LIGHTEN" layoutX="70.0" layoutY="50.0" opacity="0.9" style="-fx-border-color: Black; -fx-border-insets: Black;" text="RockRateMovie" textFill="#f1ff00" textOverrun="CLIP">
          <font>
             <Font name="Avenir Black" size="62.0" />
          </font>
          <cursor>
             <Cursor fx:constant="DEFAULT" />
          </cursor>
-         <effect>
-            <Bloom threshold="0.0" />
-         </effect>
       </Label>
-      <Label accessibleRole="BUTTON" layoutX="282.0" layoutY="266.0" text="Sign In" textFill="#ffbf00">
-         <font>
-            <Font name="Apple Braille Outline 6 Dot" size="22.0" />
-         </font>
-      </Label>
-      <Label layoutX="276.0" layoutY="309.0" text="Register" textFill="#ffbf00">
-         <font>
-            <Font name="Apple Braille Outline 6 Dot" size="22.0" />
-         </font>
-      </Label>
-      <Line endX="417.0" endY="177.0" layoutY="8.0" startX="215.0" startY="177.0" stroke="#ffbf00" />
-      <Line endX="417.0" endY="177.0" layoutY="44.0" startX="215.0" startY="177.0" stroke="#ffbf00" />
-      <TextField alignment="CENTER" disable="true" layoutX="216.0" layoutY="158.0" opacity="0.24" prefHeight="27.0" prefWidth="199.0" text="Username" />
-      <TextField alignment="CENTER" blendMode="LIGHTEN" depthTest="DISABLE" disable="true" layoutX="215.0" layoutY="193.0" opacity="0.21" prefHeight="27.0" prefWidth="200.0" text="Password">
-         <effect>
-            <ColorInput height="27.33" width="203.39">
-               <paint>
-                  <LinearGradient endX="1.0" endY="1.0">
-                     <stops>
-                        <Stop color="BLACK" />
-                        <Stop color="WHITE" offset="1.0" />
-                     </stops>
-                  </LinearGradient>
-               </paint>
-            </ColorInput>
-         </effect>
-      </TextField>
    </children>
 </Pane>
