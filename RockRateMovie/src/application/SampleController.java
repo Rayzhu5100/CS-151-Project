@@ -3,12 +3,13 @@ package application;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.EmptyStackException;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -27,7 +28,7 @@ public class SampleController{
 	@FXML
 	private Label loginMessageLabel;
 	
-	public void loginButtonOnAction(MouseEvent event) {
+	public void loginButtonOnAction(ActionEvent event) {
 		
 		if(!enterUsernameField.getText().isEmpty() && !enterPasswordField.getText().isEmpty()) {
 			validateLogin();
