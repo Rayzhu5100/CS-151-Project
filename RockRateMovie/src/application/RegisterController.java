@@ -3,6 +3,8 @@ package application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -36,10 +38,12 @@ public class RegisterController {
 
     }
 
-    public void backButtonOnAction(ActionEvent event) throws IOException {
-        Stage stage = (Stage) Back.getScene().getWindow();
-        stage.close();
-        createLoginPage();
+    public void backButtonOnAction(ActionEvent actionEvent) throws IOException {
+        Parent tableViewParent = FXMLLoader.load(getClass().getResource("login.fxml"));
+        Scene tableViewScene = new Scene(tableViewParent);
+        Stage window = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
+        window.setScene(tableViewScene);
+        window.show();
     }
 
     public void createLoginPage(){

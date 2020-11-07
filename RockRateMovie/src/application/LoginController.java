@@ -1,6 +1,8 @@
 package application;
 
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -8,6 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -36,7 +39,7 @@ public class LoginController {
 	public void loginButtonOnAction(ActionEvent event) {
 		
 		if(!enterUsernameField.getText().isEmpty() && !enterPasswordField.getText().isEmpty()) {
-			validateLogin();
+			validateLogin(event);
 
 		}else {
 			loginMessageLabel.setText("Please enter username and password!");
@@ -48,68 +51,50 @@ public class LoginController {
 		stage.close();
 	}
 	
-	public void validateLogin() {
+	public void validateLogin(ActionEvent actionEvent) {
 		DatabaseConnection connectNow = new DatabaseConnection();
 		Connection connectDB = connectNow.getConnection();
-		
-		String verifyLogin = "SELECT user_name from user_info WHERE user_name='" + enterUsernameField.getText() + "' AND password='" + enterPasswordField.getText()+ "'";
-		
+
+	String verifyLogin = "SELECT user_name from user_info WHERE user_name='" + enterUsernameField.getText() + "' AND password='" + enterPasswordField.getText()+ "'";
+
 		try {
-			
-			Statement statement = connectDB.createStatement();
-			ResultSet queryResult = statement.executeQuery(verifyLogin);
-			
-			if(queryResult.next()) {
-				Stage stage = (Stage) EXIT.getScene().getWindow();
-				stage.close();
-				createMainMenu();
-			}else {
-				loginMessageLabel.setText("Invalid login. Please try again.");
-				}
 
-		}catch(Exception e) {
-			e.printStackTrace();
-			e.getCause();
+		Statement statement = connectDB.createStatement();
+		ResultSet queryResult = statement.executeQuery(verifyLogin);
+
+		if(queryResult.next()) {
+			Parent tableViewParent = FXMLLoader.load(getClass().getResource("MainMenu.fxml"));
+			Scene tableViewScene = new Scene(tableViewParent);
+			Stage window = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
+			window.setScene(tableViewScene);
+			window.show();
+		}else {
+			loginMessageLabel.setText("Invalid login. Please try again.");
 		}
+
+	}catch(Exception e) {
+		e.printStackTrace();
+		e.getCause();
+	}
+}
+
+
+	public void createAccountForm(ActionEvent actionEvent) throws IOException {
+		Parent tableViewParent = FXMLLoader.load(getClass().getResource("register.fxml"));
+		Scene tableViewScene = new Scene(tableViewParent);
+		Stage window = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
+		window.setScene(tableViewScene);
+		window.show();
 	}
 
+	public void createMainMenu(ActionEvent actionEvent) throws IOException {
 
-	public void createAccountForm(){
-		Stage stage = (Stage) RegisterButton.getScene().getWindow();
-		stage.close();
-		try{
-			Pane root = (Pane) FXMLLoader.load(getClass().getResource("register.fxml"));
-			Stage registerStage = new Stage();
-			registerStage.initStyle(StageStyle.UNIFIED);
-			Scene scene = new Scene(root,900,600);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			registerStage.setScene(scene);
-			registerStage.show();
-
-		}catch(Exception e){
-			e.printStackTrace();
-			e.getCause();
-		}
+		Parent tableViewParent = FXMLLoader.load(getClass().getResource("MainMenu.fxml"));
+		Scene tableViewScene = new Scene(tableViewParent);
+		Stage window = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
+		window.setScene(tableViewScene);
+		window.show();
 	}
-
-	public void createMainMenu(){
-		Stage stage = (Stage) LoginButton.getScene().getWindow();
-		stage.close();
-		try{
-			Pane root = (Pane) FXMLLoader.load(getClass().getResource("MainMenu.fxml"));
-			Stage registerStage = new Stage();
-			registerStage.initStyle(StageStyle.UNIFIED);
-			Scene scene = new Scene(root,900,600);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			registerStage.setScene(scene);
-			registerStage.show();
-
-		}catch(Exception e){
-			e.printStackTrace();
-			e.getCause();
-		}
-	}
-
 
 
 }
