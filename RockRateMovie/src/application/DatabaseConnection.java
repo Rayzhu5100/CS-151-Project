@@ -7,17 +7,19 @@ public class DatabaseConnection {
 	public Connection databaseLink;
 	
 	public Connection getConnection() {
-		String databaseName = "rockmovie";
+		String databaseName = "RockRateMovie";
 		String databaseUser = "admin";
 		String databasePassword= "password";
-		String url = "rockmovie.czanuyerjjgh.us-east-1.rds.amazonaws.com:3306/"+databaseName;
+		String url = "jdbc:mysql://rockmovie.czanuyerjjgh.us-east-1.rds.amazonaws.com:3306/";
 		
 		try {
-			Class.forName("org.mysql.jdbc.Driver");
-			databaseLink = DriverManager.getConnection(url, databaseUser, databasePassword);
+			Class.forName("com.mysql.jdbc.Driver");
+			databaseLink = DriverManager.getConnection(url+databaseName, databaseUser, databasePassword);
+			System.out.println("Database connect success!");
 		}catch(Exception e) {
 			e.printStackTrace();
 			e.getCause();
+			System.out.println("Database Connect failed!");
 		}
 		
 		return databaseLink;
