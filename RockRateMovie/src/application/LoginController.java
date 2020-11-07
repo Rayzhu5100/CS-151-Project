@@ -19,6 +19,7 @@ import javafx.fxml.FXML;
 import javafx.stage.StageStyle;
 
 public class LoginController {
+
 	@FXML
 	private Button LoginButton;
 	@FXML
@@ -59,8 +60,9 @@ public class LoginController {
 			ResultSet queryResult = statement.executeQuery(verifyLogin);
 			
 			if(queryResult.next()) {
-				//loginMessageLabel.setText("Congrats!");
-				createAccountForm();
+				Stage stage = (Stage) EXIT.getScene().getWindow();
+				stage.close();
+				createMainMenu();
 			}else {
 				loginMessageLabel.setText("Invalid login. Please try again.");
 				}
@@ -73,10 +75,12 @@ public class LoginController {
 
 
 	public void createAccountForm(){
+		Stage stage = (Stage) RegisterButton.getScene().getWindow();
+		stage.close();
 		try{
 			Pane root = (Pane) FXMLLoader.load(getClass().getResource("register.fxml"));
 			Stage registerStage = new Stage();
-			registerStage.initStyle(StageStyle.UNDECORATED);
+			registerStage.initStyle(StageStyle.UNIFIED);
 			Scene scene = new Scene(root,900,600);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			registerStage.setScene(scene);
@@ -88,5 +92,24 @@ public class LoginController {
 		}
 	}
 
-	
+	public void createMainMenu(){
+		Stage stage = (Stage) LoginButton.getScene().getWindow();
+		stage.close();
+		try{
+			Pane root = (Pane) FXMLLoader.load(getClass().getResource("MainMenu.fxml"));
+			Stage registerStage = new Stage();
+			registerStage.initStyle(StageStyle.UNIFIED);
+			Scene scene = new Scene(root,900,600);
+			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			registerStage.setScene(scene);
+			registerStage.show();
+
+		}catch(Exception e){
+			e.printStackTrace();
+			e.getCause();
+		}
+	}
+
+
+
 }
