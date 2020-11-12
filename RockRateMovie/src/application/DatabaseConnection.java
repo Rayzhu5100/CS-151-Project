@@ -10,7 +10,7 @@ public class DatabaseConnection {
 		String databaseName = "RockRateMovie";
 		String databaseUser = "admin";
 		String databasePassword= "password";
-		String url = "jdbc:mysql://rockmovie.czanuyerjjgh.us-east-1.rds.amazonaws.com:3306/";
+		String url = "jdbc:mysql://rockratemovie.czanuyerjjgh.us-east-1.rds.amazonaws.com/";
 		
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
