@@ -17,7 +17,9 @@ import java.sql.Connection;
 import java.sql.Statement;
 import java.util.ResourceBundle;
 
-
+/**
+ * Edit User Profile page
+ */
 public class ChangeUserProfileController implements Initializable {
 
     String username;
@@ -26,8 +28,22 @@ public class ChangeUserProfileController implements Initializable {
     @FXML
     private Label LabelText,UsernameDisplay;
 
+    /**
+     * get username from session and display username at the beginning
+     * @param location none
+     * @param resources none
+     */
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        username = Session.INSTANCE.getUsername(username);
+        UsernameDisplay.setText(username);
+    }
 
-
+    /**
+     * Back to user profile page and save username to session when user click back button
+     * @param actionEvent event
+     * @throws IOException when couldn't load "UserProfile.fxml"
+     */
     public void backOnAction(ActionEvent actionEvent) throws IOException {
         Session.INSTANCE.put("user",username);
         Parent tableViewParent = FXMLLoader.load(getClass().getResource("UserProfile.fxml"));
@@ -37,30 +53,40 @@ public class ChangeUserProfileController implements Initializable {
         window.show();
     }
 
-    public void submitAction(ActionEvent actionEvent) {
-        checkInput(NewPasswordInput,"password");
-        checkInput(NewNameInput,"name");
-        checkInput(NewEmailInput,"email");
+    /**
+     * Update the user's informaton when user click submit button
+     */
+    public void submitAction() {
+        checkInputUpdate(NewPasswordInput,"password");
+        checkInputUpdate(NewNameInput,"name");
+        checkInputUpdate(NewEmailInput,"email");
         setText();
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        username = Session.INSTANCE.getUsername(username);
-        UsernameDisplay.setText(username);
-    }
-
-    public void checkInput(TextField input, String column){
+    /**
+     * Update the user information only user enter the valid input
+     * @param input userinput String
+     * @param column database column String
+     */
+    public void checkInputUpdate(TextField input, String column){
         if (!input.getText().isEmpty()) {
             updateUserProfile(input, column);
         }
     }
 
+    /**
+     * Set text for update success message
+     */
     public void setText(){
         LabelText.setText("User profile update succeed!");
 
     }
 
+    /**
+     * Update the user information to database
+     * @param input userinput String
+     * @param column database column String
+     */
     public void updateUserProfile(TextField input, String column){
         String NewData = input.getText();
 

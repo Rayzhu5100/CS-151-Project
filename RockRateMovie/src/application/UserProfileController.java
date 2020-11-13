@@ -18,14 +18,21 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle;
 
+/**
+ * User Profile page
+ */
 public class UserProfileController implements Initializable {
-
 
     @FXML
     private Label UsernameDisplay, PasswordDisplay, NameDisplay, EmailDisplay;
 
     String username;
 
+    /**
+     * Show user's information at the beginning
+     * @param location None
+     * @param resources None
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         username = Session.INSTANCE.getUsername(username);
@@ -39,10 +46,19 @@ public class UserProfileController implements Initializable {
         }
     }
 
-    public void showPasswordOnAction(ActionEvent event) throws SQLException {
+    /**
+     * show password when user click password button
+     * @throws SQLException if couldn't get password from database
+     */
+    public void showPasswordOnAction() throws SQLException {
         PasswordDisplay.setText(getUserProfile().getString("password"));
     }
 
+    /**
+     * Store user to Session and back to Main menu when user click back button
+     * @param actionEvent event
+     * @throws IOException couldn't load "MainMenu.fxml"
+     */
     public void backOnAction(ActionEvent actionEvent) throws IOException {
         Session.INSTANCE.put("user",username);
         Parent tableViewParent = FXMLLoader.load(getClass().getResource("MainMenu.fxml"));
@@ -52,6 +68,11 @@ public class UserProfileController implements Initializable {
         window.show();
     }
 
+    /**
+     * Jump to Edit user profile page when user click edit user profile button
+     * @param actionEvent event
+     * @throws IOException couldn't load "ChangeUserProfile.fxml"
+     */
     public void changeProfileOnAction(ActionEvent actionEvent) throws IOException {
         Session.INSTANCE.put("user", username);
         Parent tableViewParent = FXMLLoader.load(getClass().getResource("ChangeUserProfile.fxml"));
@@ -61,6 +82,11 @@ public class UserProfileController implements Initializable {
         window.show();
     }
 
+    /**
+     * retrieve user information from database
+     * @return full query result (dictionary)
+     * @throws SQLException if couldn't connect the database
+     */
     public ResultSet getUserProfile() throws SQLException {
         DatabaseConnection connectNow = new DatabaseConnection();
         Connection connectDB = connectNow.getConnection();
@@ -73,6 +99,7 @@ public class UserProfileController implements Initializable {
                 return queryResult;
             }
             connectDB.close();
+            //need to fix here
             return queryResult;
         }
 }

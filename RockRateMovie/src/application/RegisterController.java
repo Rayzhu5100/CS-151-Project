@@ -6,12 +6,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -19,23 +16,29 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 
-
-
+/**
+ * User registration page
+ */
 public class RegisterController {
 
 
-    @FXML
-    private Button Back;
     @FXML
     private Label RegisterationMessageLabel;
     @FXML
     private TextField usernameInput,passwordInput,confirmPasswordInput,NameInput,EmailInput;
 
-    public void registerButtonOnAction(ActionEvent event){
+    /**
+     * When user click register button, call registerUserCheck() to check the input
+     */
+    public void registerButtonOnAction(){
         registerUserCheck();
-
     }
 
+    /**
+     * When user click back button, back to login page
+     * @param actionEvent event
+     * @throws IOException when couldn't load "login.fxml"
+     */
     public void backButtonOnAction(ActionEvent actionEvent) throws IOException {
         Parent tableViewParent = FXMLLoader.load(getClass().getResource("login.fxml"));
         Scene tableViewScene = new Scene(tableViewParent);
@@ -44,22 +47,11 @@ public class RegisterController {
         window.show();
     }
 
-    public void createLoginPage(){
-        try{
-            Pane root = (Pane) FXMLLoader.load(getClass().getResource("Login.fxml"));
-            Stage registerStage = new Stage();
-            registerStage.initStyle(StageStyle.UNIFIED);
-            Scene scene = new Scene(root,900,600);
-            scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-            registerStage.setScene(scene);
-            registerStage.show();
-
-        }catch(Exception e){
-            e.printStackTrace();
-            e.getCause();
-        }
-    }
-
+    /**
+     * check the information from user input, if all the input are correct and no duplicate username, call registerUser()
+     * to store user registration information to database
+     * else prompt corresponding error message
+     */
     public void registerUserCheck() {
         if(checkEmptyfield(usernameInput.getText(),passwordInput.getText(),confirmPasswordInput.getText(),
                 NameInput.getText(),EmailInput.getText())){
@@ -76,6 +68,9 @@ public class RegisterController {
         }
     }
 
+    /**
+     * store user register information to database
+     */
     public void registerUser(){
 
         String username = usernameInput.getText();
@@ -83,6 +78,7 @@ public class RegisterController {
         String name = usernameInput.getText();
         String email = EmailInput.getText();
 
+        //connect database
         DatabaseConnection connectNow = new DatabaseConnection();
         Connection connectDB = connectNow.getConnection();
 
@@ -98,6 +94,11 @@ public class RegisterController {
         }
     }
 
+    /**
+     * Check if the username already taken
+     * @param usernameInput username
+     * @return return true if duplicate, return false if not duplicate.
+     */
     public boolean checkDuplicate(String usernameInput){
         DatabaseConnection connectNow = new DatabaseConnection();
         Connection connectDB = connectNow.getConnection();
@@ -119,6 +120,15 @@ public class RegisterController {
         return false;
     }
 
+    /**
+     * Check all user input
+     * @param usernameInput String username
+     * @param passwordInput String password
+     * @param confirmPasswordInput String re-password
+     * @param NameInput String name
+     * @param EmailInput String email
+     * @return return true if no fields are empty, return false if any of fields are empty and prompt error message.
+     */
     public boolean checkEmptyfield(String usernameInput,String passwordInput,String confirmPasswordInput,
                                    String NameInput,String EmailInput){
         if (usernameInput.equals("")){

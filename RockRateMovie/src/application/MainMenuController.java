@@ -15,6 +15,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Main Menu page
+ */
 public class MainMenuController implements Initializable {
     String username, WelcomeText;
     @FXML
@@ -22,9 +25,11 @@ public class MainMenuController implements Initializable {
     @FXML
     public Label WelcomeLabel;
 
-
-
-
+    /**
+     * When user click back button, go back to login page
+     * @param actionEvent event
+     * @throws IOException if couldn't load "login.fxml"
+     */
     public void exitButtonOnAction(ActionEvent actionEvent) throws IOException {
 
         Parent tableViewParent = FXMLLoader.load(getClass().getResource("login.fxml"));
@@ -34,6 +39,11 @@ public class MainMenuController implements Initializable {
         window.show();
     }
 
+    /**
+     * When user click user profile button, jump to user profile page
+     * @param actionEvent action
+     * @throws IOException if couldn't load "UserProfile.fxml"
+     */
     public void userProfileOnAction(ActionEvent actionEvent) throws IOException{
 
         Parent tableViewParent = FXMLLoader.load(getClass().getResource("UserProfile.fxml"));
@@ -43,7 +53,11 @@ public class MainMenuController implements Initializable {
         window.show();
     }
 
-
+    /**
+     * Set a welcome label
+     * @param location none
+     * @param resources none
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         username = Session.INSTANCE.getUsername(username);

@@ -1,7 +1,9 @@
 package application;
 import java.sql.*;
 
-
+/**
+ * Connect to AWS MySql database
+ */
 public class DatabaseConnection {
 	public Connection databaseLink;
 	
@@ -22,21 +24,6 @@ public class DatabaseConnection {
 		}
 		
 		return databaseLink;
-	}
-
-	public ResultSet getUserProfile(String username) throws SQLException {
-		DatabaseConnection connectNow = new DatabaseConnection();
-		Connection connectDB = connectNow.getConnection();
-
-		String query = "SELECT * from user_info WHERE user_name='" + username + "'";
-
-		Statement statement = connectDB.createStatement();
-		ResultSet queryResult = statement.executeQuery(query);
-		if(queryResult.next()){
-			return queryResult;
-		}
-		connectDB.close();
-		return queryResult;
 	}
 
 }

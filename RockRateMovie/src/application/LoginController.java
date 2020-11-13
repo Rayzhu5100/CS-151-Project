@@ -10,7 +10,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -20,12 +19,11 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ResourceBundle;
 
+/**
+ * User login page
+ */
 public class LoginController implements Initializable {
 
-	@FXML
-	private Button LoginButton;
-	@FXML
-	private Button RegisterButton;
 	@FXML
 	private Button EXIT;
 	@FXML
@@ -35,30 +33,41 @@ public class LoginController implements Initializable {
 	@FXML
 	private Label loginMessageLabel;
 
+	/**
+	 * Click username and password text field, if any of them are not empty call validate the data
+	 * else throw error message
+	 * @param event user click the login button
+	 */
 	public void loginButtonOnAction(ActionEvent event) {
 
 		if(!enterUsernameField.getText().isEmpty() && !enterPasswordField.getText().isEmpty()) {
 			validateLogin(event);
-
 		}else {
 			loginMessageLabel.setText("Please enter username and password!");
 		}
 	}
 
-	public void exitButtonOnAction(ActionEvent event) {
+	/**
+	 * Exit program if user click "Exit RockRateMovie" button
+	 */
+	public void exitButtonOnAction() {
 		Stage stage = (Stage) EXIT.getScene().getWindow();
 		stage.close();
 	}
 
+	/**
+	 * Validate the username and password, if pass jump to main menu
+	 * @param actionEvent event
+	 */
 	public void validateLogin(ActionEvent actionEvent) {
 		String username = enterUsernameField.getText();
 		String password = enterPasswordField.getText();
 
+		//connect database
 		DatabaseConnection connectNow = new DatabaseConnection();
 		Connection connectDB = connectNow.getConnection();
 
 	String verifyLogin = "SELECT user_name from user_info WHERE user_name='" + username + "' AND password='" + password + "'";
-
 
 	try {
 
@@ -66,13 +75,12 @@ public class LoginController implements Initializable {
 		ResultSet queryResult = statement.executeQuery(verifyLogin);
 
 		if(queryResult.next()) {
+			//close the database connection
 			connectDB.close();
+			//put username to Session
 			Session.INSTANCE.put("user",username);
-			Parent tableViewParent = FXMLLoader.load(getClass().getResource("MainMenu.fxml"));
-			Scene tableViewScene = new Scene(tableViewParent);
-			Stage window = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
-			window.setScene(tableViewScene);
-			window.show();
+			//jump to Main Menu
+			createMainMenu(actionEvent);
 		}else {
 			loginMessageLabel.setText("Invalid login. Please try again.");
 		}
@@ -83,7 +91,11 @@ public class LoginController implements Initializable {
 	}
 }
 
-
+	/**
+	 * jump to create Account page
+	 * @param actionEvent event
+	 * @throws IOException if unable to load "register.fxml"
+	 */
 	public void createAccountForm(ActionEvent actionEvent) throws IOException {
 		Parent tableViewParent = FXMLLoader.load(getClass().getResource("register.fxml"));
 		Scene tableViewScene = new Scene(tableViewParent);
@@ -92,8 +104,12 @@ public class LoginController implements Initializable {
 		window.show();
 	}
 
+	/**
+	 * Jump to Main Menu page
+	 * @param actionEvent event
+	 * @throws IOException if unable to load "MainMenu.fxml"
+	 */
 	public void createMainMenu(ActionEvent actionEvent) throws IOException {
-
 		Parent tableViewParent = FXMLLoader.load(getClass().getResource("MainMenu.fxml"));
 		Scene tableViewScene = new Scene(tableViewParent);
 		Stage window = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
