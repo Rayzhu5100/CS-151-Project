@@ -23,7 +23,6 @@ import java.sql.Statement;
 
 public class RegisterController {
 
-    Main main;
 
     @FXML
     private Button Back;
@@ -33,7 +32,6 @@ public class RegisterController {
     private TextField usernameInput,passwordInput,confirmPasswordInput,NameInput,EmailInput;
 
     public void registerButtonOnAction(ActionEvent event){
-        //RegisterationMessageLabel.setText("User has been registered successfully");
         registerUserCheck();
 
     }
@@ -79,19 +77,21 @@ public class RegisterController {
     }
 
     public void registerUser(){
-        DatabaseConnection connectNow = new DatabaseConnection();
-        Connection connectDB = connectNow.getConnection();
 
         String username = usernameInput.getText();
         String password = passwordInput.getText();
         String name = usernameInput.getText();
         String email = EmailInput.getText();
 
+        DatabaseConnection connectNow = new DatabaseConnection();
+        Connection connectDB = connectNow.getConnection();
+
         String insertData = "INSERT INTO user_info VALUES ('"+username+"','"+password+"','"+name+"','"+email+"')";
 
         try{
             Statement statement= connectDB.createStatement();
             statement.executeUpdate(insertData);
+            connectDB.close();
         }catch(Exception e){
             e.printStackTrace();
             e.getCause();

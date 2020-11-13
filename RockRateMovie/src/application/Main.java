@@ -18,7 +18,7 @@ public class Main extends Application {
 		try {
 			Parent login = (Pane)FXMLLoader.load(getClass().getResource("login.fxml"));
 			primaryStage.initStyle(StageStyle.UTILITY);
-			Scene scene = new Scene(login,900,600);
+			Scene scene = new Scene(login,1280,800);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();
