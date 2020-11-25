@@ -1,5 +1,8 @@
 package application;
-import java.sql.*;
+
+
+import java.sql.Connection;
+import java.sql.DriverManager;
 
 /**
  * Connect to AWS MySql database

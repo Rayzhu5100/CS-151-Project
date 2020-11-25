@@ -35,7 +35,7 @@ public class ChangeUserProfileController implements Initializable {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        username = Session.INSTANCE.getUsername(username);
+        username = Session.INSTANCE.getUsername();
         UsernameDisplay.setText(username);
     }
 

@@ -16,9 +16,8 @@ class Session{
         return this.store.get(key);
     }
 
-    public String getUsername(String username) {
-        username = (String) Session.INSTANCE.get("user");
-        return username;
+    public String getUsername() {
+        return (String) get("user");
     }
 }
 

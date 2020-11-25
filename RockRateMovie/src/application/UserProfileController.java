@@ -35,7 +35,7 @@ public class UserProfileController implements Initializable {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        username = Session.INSTANCE.getUsername(username);
+        username = Session.INSTANCE.getUsername();
         try {
             ResultSet queryResult = getUserProfile();
             NameDisplay.setText(queryResult.getString("name"));
@@ -99,7 +99,6 @@ public class UserProfileController implements Initializable {
                 return queryResult;
             }
             connectDB.close();
-            //need to fix here
             return queryResult;
         }
 }
