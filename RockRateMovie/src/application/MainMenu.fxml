@@ -21,12 +21,12 @@
             <MotionBlur angle="180.0" radius="63.0" />
          </effect>
       </Rectangle>
-      <Label alignment="CENTER" layoutX="469.0" layoutY="123.0" prefHeight="70.0" prefWidth="342.0" text="Main Menu" textFill="#ffbf00">
+      <Label alignment="CENTER" layoutX="469.0" layoutY="133.0" prefHeight="70.0" prefWidth="342.0" text="Main Menu" textFill="#ffbf00">
          <font>
             <Font name="Arial Black" size="47.0" />
          </font>
       </Label>
-      <Button fx:id="UserProfileButton" layoutX="530.0" layoutY="242.0" mnemonicParsing="false" onAction="#userProfileOnAction" prefHeight="40.0" prefWidth="220.0" text="User Profile" textFill="#ab7d00" AnchorPane.bottomAnchor="515.0">
+      <Button fx:id="UserProfileButton" layoutX="530.0" layoutY="274.0" mnemonicParsing="false" onAction="#userProfileOnAction" prefHeight="40.0" prefWidth="220.0" text="User Profile" textFill="#ab7d00" AnchorPane.bottomAnchor="483.0">
          <font>
             <Font name="Arial Black" size="20.0" />
          </font>
@@ -34,7 +34,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button layoutX="530.0" layoutY="478.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="220.0" text="Friend List" textFill="#ab7d00" AnchorPane.bottomAnchor="279.0">
+      <Button layoutX="530.0" layoutY="466.0" mnemonicParsing="false" onAction="#movieRatingOnAction" prefHeight="40.0" prefWidth="220.0" text="Movie Rating" textFill="#ab7d00" AnchorPane.bottomAnchor="291.0">
          <font>
             <Font name="Arial Black" size="20.0" />
          </font>
@@ -42,15 +42,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button layoutX="530.0" layoutY="400.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="220.0" text="Movie Rating" textFill="#ab7d00" AnchorPane.bottomAnchor="357.0">
-         <font>
-            <Font name="Arial Black" size="20.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Button>
-      <Button layoutX="530.0" layoutY="320.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="220.0" text="Movie Ranking" textFill="#ab7d00" AnchorPane.bottomAnchor="437.0">
+      <Button layoutX="530.0" layoutY="371.0" mnemonicParsing="false" onAction="#movieRankOnAction" prefHeight="40.0" prefWidth="220.0" text="Movie Ranking" textFill="#ab7d00" AnchorPane.bottomAnchor="386.0">
          <font>
             <Font name="Arial Black" size="20.0" />
          </font>

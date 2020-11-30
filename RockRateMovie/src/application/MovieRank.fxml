@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.GaussianBlur?>
 <?import javafx.scene.image.Image?>
@@ -8,7 +10,6 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MovieRankController">
    <children>
       <ImageView fitHeight="800.0" fitWidth="1280.0" layoutX="-1.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
@@ -16,15 +17,250 @@
             <Image url="@../../image/WechatIMG1.jpeg" />
          </image>
       </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="775.0" layoutX="191.0" layoutY="8.0" opacity="0.83" stroke="BLACK" strokeType="INSIDE" width="889.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="775.0" layoutX="195.0" layoutY="-36.0" opacity="0.83" stroke="BLACK" strokeType="INSIDE" width="889.0">
          <effect>
             <GaussianBlur radius="58.39" />
          </effect>
       </Rectangle>
-      <Label layoutX="454.0" layoutY="104.0" text="Movie Ranking" textFill="#ffbf00">
+      <Label layoutX="452.0" layoutY="75.0" text="Movie Ranking" textFill="#ffbf00">
          <font>
             <Font name="Arial Black" size="47.0" />
          </font>
       </Label>
+      <Label alignment="CENTER" layoutX="349.0" layoutY="159.0" prefHeight="42.0" prefWidth="414.0" style="-fx-border-color: #ffbf00;" text="Movie Name" textFill="#ffbf00">
+         <font>
+            <Font name="Arial Black" size="20.0" />
+         </font></Label>
+      <Label fx:id="name1" alignment="CENTER" contentDisplay="CENTER" layoutX="349.0" layoutY="201.0" prefHeight="50.0" prefWidth="414.0" style="-fx-border-color: #ffbf00;" textFill="#ffbf00">
+         <font>
+            <Font name="Arial Black" size="16.0" />
+         </font></Label>
+      <Label fx:id="name2" alignment="CENTER" contentDisplay="CENTER" layoutX="349.0" layoutY="251.0" prefHeight="50.0" prefWidth="414.0" style="-fx-border-color: #ffbf00;" textFill="#ffbf00">
+         <font>
+            <Font name="Arial Black" size="16.0" />
+         </font></Label>
+      <Label fx:id="name3" alignment="CENTER" contentDisplay="CENTER" layoutX="349.0" layoutY="301.0" prefHeight="50.0" prefWidth="414.0" style="-fx-border-color: #ffbf00;" textFill="#ffbf00">
+         <font>
+            <Font name="Arial Black" size="16.0" />
+         </font></Label>
+      <Label fx:id="name4" alignment="CENTER" contentDisplay="CENTER" layoutX="349.0" layoutY="351.0" prefHeight="50.0" prefWidth="414.0" style="-fx-border-color: #ffbf00;" textFill="#ffbf00">
+         <font>
+            <Font name="Arial Black" size="16.0" />
+         </font></Label>
+      <Label fx:id="name5" alignment="CENTER" contentDisplay="CENTER" layoutX="349.0" layoutY="401.0" prefHeight="50.0" prefWidth="414.0" style="-fx-border-color: #ffbf00;" textFill="#ffbf00">
+         <font>
+            <Font name="Arial Black" size="16.0" />
+         </font></Label>
+      <Label fx:id="name6" alignment="CENTER" contentDisplay="CENTER" layoutX="349.0" layoutY="451.0" prefHeight="50.0" prefWidth="414.0" style="-fx-border-color: #ffbf00;" textFill="#ffbf00">
+         <font>
+            <Font name="Arial Black" size="16.0" />
+         </font></Label>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="268.0" layoutY="159.0" prefHeight="42.0" prefWidth="81.0" style="-fx-border-color: #ffbf00;" text="Rank" textFill="#ffbf00">
+         <font>
+            <Font name="Arial Black" size="20.0" />
+         </font></Label>
+      <Label fx:id="rank1" alignment="CENTER" contentDisplay="CENTER" layoutX="268.0" layoutY="201.0" prefHeight="50.0" prefWidth="81.0" style="-fx-border-color: #ffbf00;" textFill="#ffbf00">
+         <font>
+            <Font name="Arial Black" size="16.0" />
+         </font></Label>
+      <Label fx:id="rank2" alignment="CENTER" contentDisplay="CENTER" layoutX="268.0" layoutY="251.0" prefHeight="50.0" prefWidth="81.0" style="-fx-border-color: #ffbf00;" textFill="#ffbf00">
+         <font>
+            <Font name="Arial Black" size="16.0" />
+         </font></Label>
+      <Label fx:id="rank3" alignment="CENTER" contentDisplay="CENTER" layoutX="268.0" layoutY="301.0" prefHeight="50.0" prefWidth="81.0" style="-fx-border-color: #ffbf00;" textFill="#ffbf00">
+         <font>
+            <Font name="Arial Black" size="16.0" />
+         </font></Label>
+      <Label fx:id="rank4" alignment="CENTER" contentDisplay="CENTER" layoutX="268.0" layoutY="351.0" prefHeight="50.0" prefWidth="81.0" style="-fx-border-color: #ffbf00;" textFill="#ffbf00">
+         <font>
+            <Font name="Arial Black" size="16.0" />
+         </font></Label>
+      <Label fx:id="rank5" alignment="CENTER" contentDisplay="CENTER" layoutX="268.0" layoutY="401.0" prefHeight="50.0" prefWidth="81.0" style="-fx-border-color: #ffbf00;" textFill="#ffbf00">
+         <font>
+            <Font name="Arial Black" size="16.0" />
+         </font></Label>
+      <Label fx:id="rank6" alignment="CENTER" contentDisplay="CENTER" layoutX="268.0" layoutY="451.0" prefHeight="50.0" prefWidth="81.0" style="-fx-border-color: #ffbf00;" textFill="#ffbf00">
+         <font>
+            <Font name="Arial Black" size="16.0" />
+         </font></Label>
+      <Label alignment="CENTER" layoutX="763.0" layoutY="159.0" prefHeight="42.0" prefWidth="100.0" style="-fx-border-color: #ffbf00;" text="Score" textFill="#ffbf00">
+         <font>
+            <Font name="Arial Black" size="20.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="863.0" layoutY="159.0" prefHeight="42.0" prefWidth="100.0" style="-fx-border-color: #ffbf00;" text="Voters" textAlignment="CENTER" textFill="#ffbf00">
+         <font>
+            <Font name="Arial Black" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="score1" alignment="CENTER" layoutX="763.0" layoutY="201.0" prefHeight="50.0" prefWidth="100.0" style="-fx-border-color: #ffbf00;" textFill="#ffbf00">
+         <font>
+            <Font name="Arial Black" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="score2" alignment="CENTER" layoutX="763.0" layoutY="251.0" prefHeight="50.0" prefWidth="100.0" style="-fx-border-color: #ffbf00;" textFill="#ffbf00">
+         <font>
+            <Font name="Arial Black" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="score4" alignment="CENTER" layoutX="763.0" layoutY="351.0" prefHeight="50.0" prefWidth="100.0" style="-fx-border-color: #ffbf00;" textFill="#ffbf00">
+         <font>
+            <Font name="Arial Black" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="score3" alignment="CENTER" layoutX="763.0" layoutY="301.0" prefHeight="50.0" prefWidth="100.0" style="-fx-border-color: #ffbf00;" textFill="#ffbf00">
+         <font>
+            <Font name="Arial Black" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="score5" alignment="CENTER" layoutX="763.0" layoutY="401.0" prefHeight="50.0" prefWidth="100.0" style="-fx-border-color: #ffbf00;" textFill="#ffbf00">
+         <font>
+            <Font name="Arial Black" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="score6" alignment="CENTER" layoutX="763.0" layoutY="451.0" prefHeight="50.0" prefWidth="100.0" style="-fx-border-color: #ffbf00;" textFill="#ffbf00">
+         <font>
+            <Font name="Arial Black" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="voters1" alignment="CENTER" layoutX="863.0" layoutY="201.0" prefHeight="50.0" prefWidth="100.0" style="-fx-border-color: #ffbf00;" textAlignment="CENTER" textFill="#ffbf00">
+         <font>
+            <Font name="Arial Black" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="voters2" alignment="CENTER" layoutX="863.0" layoutY="251.0" prefHeight="50.0" prefWidth="100.0" style="-fx-border-color: #ffbf00;" textAlignment="CENTER" textFill="#ffbf00">
+         <font>
+            <Font name="Arial Black" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="voters3" alignment="CENTER" layoutX="863.0" layoutY="301.0" prefHeight="50.0" prefWidth="100.0" style="-fx-border-color: #ffbf00;" textAlignment="CENTER" textFill="#ffbf00">
+         <font>
+            <Font name="Arial Black" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="voters4" alignment="CENTER" layoutX="863.0" layoutY="351.0" prefHeight="50.0" prefWidth="100.0" style="-fx-border-color: #ffbf00;" textAlignment="CENTER" textFill="#ffbf00">
+         <font>
+            <Font name="Arial Black" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="voters5" alignment="CENTER" layoutX="863.0" layoutY="401.0" prefHeight="50.0" prefWidth="100.0" style="-fx-border-color: #ffbf00;" textAlignment="CENTER" textFill="#ffbf00">
+         <font>
+            <Font name="Arial Black" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="voters6" alignment="CENTER" layoutX="863.0" layoutY="451.0" prefHeight="50.0" prefWidth="100.0" style="-fx-border-color: #ffbf00;" textAlignment="CENTER" textFill="#ffbf00">
+         <font>
+            <Font name="Arial Black" size="20.0" />
+         </font>
+      </Label>
+      <Button layoutX="558.0" layoutY="650.0" mnemonicParsing="false" onAction="#backOnAction" prefHeight="42.0" prefWidth="165.0" text="BACK">
+         <font>
+            <Font name="Arial Black" size="14.0" />
+         </font>
+      </Button>
+      <Label fx:id="name7" alignment="CENTER" contentDisplay="CENTER" layoutX="349.0" layoutY="501.0" prefHeight="50.0" prefWidth="414.0" style="-fx-border-color: #ffbf00;" textFill="#ffbf00">
+         <font>
+            <Font name="Arial Black" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="rank7" alignment="CENTER" contentDisplay="CENTER" layoutX="268.0" layoutY="501.0" prefHeight="50.0" prefWidth="81.0" style="-fx-border-color: #ffbf00;" textFill="#ffbf00">
+         <font>
+            <Font name="Arial Black" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="score7" alignment="CENTER" layoutX="763.0" layoutY="501.0" prefHeight="50.0" prefWidth="100.0" style="-fx-border-color: #ffbf00;" textFill="#ffbf00">
+         <font>
+            <Font name="Arial Black" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="voters7" alignment="CENTER" layoutX="863.0" layoutY="501.0" prefHeight="50.0" prefWidth="100.0" style="-fx-border-color: #ffbf00;" textAlignment="CENTER" textFill="#ffbf00">
+         <font>
+            <Font name="Arial Black" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="name8" alignment="CENTER" contentDisplay="CENTER" layoutX="349.0" layoutY="551.0" prefHeight="50.0" prefWidth="414.0" style="-fx-border-color: #ffbf00;" textFill="#ffbf00">
+         <font>
+            <Font name="Arial Black" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="rank8" alignment="CENTER" contentDisplay="CENTER" layoutX="268.0" layoutY="551.0" prefHeight="50.0" prefWidth="81.0" style="-fx-border-color: #ffbf00;" textFill="#ffbf00">
+         <font>
+            <Font name="Arial Black" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="score8" alignment="CENTER" layoutX="763.0" layoutY="551.0" prefHeight="50.0" prefWidth="100.0" style="-fx-border-color: #ffbf00;" textFill="#ffbf00">
+         <font>
+            <Font name="Arial Black" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="voters8" alignment="CENTER" layoutX="863.0" layoutY="551.0" prefHeight="50.0" prefWidth="100.0" style="-fx-border-color: #ffbf00;" textAlignment="CENTER" textFill="#ffbf00">
+         <font>
+            <Font name="Arial Black" size="20.0" />
+         </font>
+      </Label>
+      <Button fx:id="view11" cache="true" cacheHint="ROTATE" layoutX="349.0" layoutY="201.0" mnemonicParsing="false" onAction="#jump1" opacity="0.0" prefHeight="50.0" prefWidth="414.0" text="View">
+         <font>
+            <Font name="Arial Black" size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="view111" cache="true" cacheHint="ROTATE" layoutX="349.0" layoutY="251.0" mnemonicParsing="false" onAction="#jump2" opacity="0.0" prefHeight="50.0" prefWidth="414.0" text="View">
+         <font>
+            <Font name="Arial Black" size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="view112" cache="true" cacheHint="ROTATE" layoutX="349.0" layoutY="301.0" mnemonicParsing="false" onAction="#jump3" opacity="0.0" prefHeight="50.0" prefWidth="414.0" text="View">
+         <font>
+            <Font name="Arial Black" size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="view113" cache="true" cacheHint="ROTATE" layoutX="349.0" layoutY="351.0" mnemonicParsing="false" onAction="#jump4" opacity="0.0" prefHeight="50.0" prefWidth="414.0" text="View">
+         <font>
+            <Font name="Arial Black" size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="view114" cache="true" cacheHint="ROTATE" layoutX="349.0" layoutY="401.0" mnemonicParsing="false" onAction="#jump5" opacity="0.0" prefHeight="50.0" prefWidth="414.0" text="View">
+         <font>
+            <Font name="Arial Black" size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="view115" cache="true" cacheHint="ROTATE" layoutX="349.0" layoutY="451.0" mnemonicParsing="false" onAction="#jump6" opacity="0.0" prefHeight="50.0" prefWidth="414.0" text="View">
+         <font>
+            <Font name="Arial Black" size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="view116" cache="true" cacheHint="ROTATE" layoutX="349.0" layoutY="501.0" mnemonicParsing="false" onAction="#jump7" opacity="0.0" prefHeight="50.0" prefWidth="414.0" text="View">
+         <font>
+            <Font name="Arial Black" size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="view117" cache="true" cacheHint="ROTATE" layoutX="349.0" layoutY="551.0" mnemonicParsing="false" onAction="#jump8" opacity="0.0" prefHeight="50.0" prefWidth="414.0" text="View">
+         <font>
+            <Font name="Arial Black" size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
    </children>
 </AnchorPane>

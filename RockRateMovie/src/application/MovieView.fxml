@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.GaussianBlur?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MovieViewController">
+   <children>
+      <ImageView fitHeight="800.0" fitWidth="1280.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../image/WechatIMG1.jpeg" />
+         </image>
+         <effect>
+            <GaussianBlur radius="11.54" />
+         </effect>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="764.0" layoutX="132.0" layoutY="28.0" opacity="0.94" stroke="BLACK" strokeType="INSIDE" width="1017.0">
+         <effect>
+            <GaussianBlur radius="63.0" />
+         </effect>
+      </Rectangle>
+      <Label fx:id="movieNameLabel" alignment="CENTER" layoutX="169.0" layoutY="99.0" prefHeight="62.0" prefWidth="933.0" text="Name" textFill="#ffbf00">
+         <font>
+            <Font name="Arial Black" size="42.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="movieImage" fitHeight="457.0" fitWidth="347.0" layoutX="239.0" layoutY="161.0" pickOnBounds="true" preserveRatio="true" />
+      <Label layoutX="571.0" layoutY="161.0" prefHeight="457.0" prefWidth="553.0" style="-fx-border-color: #ffbf00;" />
+      <Label fx:id="ScoreLabel" layoutX="336.0" layoutY="626.0" prefHeight="26.0" prefWidth="73.0" textFill="#ffbf00">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="RankLabel" layoutX="505.0" layoutY="625.0" prefHeight="27.0" prefWidth="50.0" textFill="#e41111">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+      <Button layoutX="328.0" layoutY="668.0" mnemonicParsing="false" onAction="#ratePage" prefHeight="27.0" prefWidth="128.0" text="Rate This Movie" textFill="#907016">
+         <font>
+            <Font name="Arial Black" size="12.0" />
+         </font>
+      </Button>
+    <Button layoutX="538.0" layoutY="725.0" mnemonicParsing="false" onAction="#backOnAction" prefHeight="27.0" prefWidth="174.0" text="Back">
+         <font>
+            <Font name="Arial Black" size="17.0" />
+         </font>
+      </Button>
+      <Label alignment="CENTER" layoutX="571.0" layoutY="170.0" prefHeight="50.0" prefWidth="128.0" text="Year:" textFill="#ffbf00">
+         <font>
+            <Font name="Arial Black" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="YearLabel" layoutX="699.0" layoutY="170.0" prefHeight="50.0" prefWidth="161.0" textFill="#ffbf00">
+         <font>
+            <Font name="Arial Black" size="15.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="571.0" layoutY="240.0" prefHeight="50.0" prefWidth="128.0" text="Director:" textFill="#ffbf00">
+         <font>
+            <Font name="Arial Black" size="20.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="571.0" layoutY="310.0" prefHeight="50.0" prefWidth="128.0" text="Stars:" textFill="#ffbf00">
+         <font>
+            <Font name="Arial Black" size="20.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="571.0" layoutY="380.0" prefHeight="50.0" prefWidth="128.0" text="Storyline:" textFill="#ffbf00">
+         <font>
+            <Font name="Arial Black" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="DirectorLabel" layoutX="699.0" layoutY="240.0" prefHeight="50.0" prefWidth="398.0" textFill="#ffbf00">
+         <font>
+            <Font name="Arial Black" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="StarsLabel" layoutX="699.0" layoutY="310.0" prefHeight="50.0" prefWidth="398.0" textFill="#ffbf00" wrapText="true">
+         <font>
+            <Font name="Arial Black" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="StorylineLabel" alignment="TOP_LEFT" layoutX="699.0" layoutY="395.0" prefHeight="217.0" prefWidth="398.0" textFill="#ffbf00" wrapText="true">
+         <font>
+            <Font name="Arial Black" size="13.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="255.0" layoutY="624.0" prefHeight="29.0" prefWidth="73.0" text="Score:" textFill="#ffbf00">
+         <font>
+            <Font name="Arial Black" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="RankLabel1" layoutX="449.0" layoutY="625.0" text="Rank:" textFill="#e41111">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+      <Button layoutX="796.0" layoutY="668.0" mnemonicParsing="false" onAction="#viewCommentPage" prefHeight="27.0" prefWidth="128.0" text="View comment" textFill="#907016">
+         <font>
+            <Font name="Arial Black" size="12.0" />
+         </font>
+      </Button>
+      <Label fx:id="noReview" layoutX="571.0" layoutY="636.0" prefHeight="26.0" prefWidth="553.0" textFill="RED">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

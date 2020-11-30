@@ -54,6 +54,34 @@ public class MainMenuController implements Initializable {
     }
 
     /**
+     * When user click user movie rank button, jump to user ranking page
+     * @param actionEvent action
+     * @throws IOException if couldn't load "MovieRank.fxml"
+     */
+    public void movieRankOnAction(ActionEvent actionEvent) throws IOException{
+
+        Parent tableViewParent = FXMLLoader.load(getClass().getResource("MovieRank.fxml"));
+        Scene tableViewScene = new Scene(tableViewParent);
+        Stage window = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
+        window.setScene(tableViewScene);
+        window.show();
+    }
+
+    /**
+     * When user click user movie rate button, jump to user rating page
+     * @param actionEvent action
+     * @throws IOException if couldn't load "ViewMovieRating.fxml"
+     */
+    public void movieRatingOnAction(ActionEvent actionEvent) throws IOException{
+
+        Parent tableViewParent = FXMLLoader.load(getClass().getResource("ViewMovieRating.fxml"));
+        Scene tableViewScene = new Scene(tableViewParent);
+        Stage window = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
+        window.setScene(tableViewScene);
+        window.show();
+    }
+
+    /**
      * Set a welcome label
      * @param location none
      * @param resources none
@@ -65,4 +93,5 @@ public class MainMenuController implements Initializable {
         WelcomeLabel.setText(WelcomeText);
 
     }
+
 }
