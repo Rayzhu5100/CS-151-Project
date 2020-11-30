@@ -46,11 +46,6 @@ public class CreateMovieController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         username = Session.INSTANCE.getUsername();
-
-        File BrandingFile = new File("image/WechatIMG1.jpeg");
-        Image brandingImage = new Image(BrandingFile.toURI().toString());
-        im.setImage(brandingImage);
-
     }
 
     public void backOnAction(ActionEvent actionEvent) throws IOException {
