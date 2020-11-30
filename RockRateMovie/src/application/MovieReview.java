@@ -3,7 +3,7 @@ package application;
 public class MovieReview {
     String movieName;
     String review;
-    String user;
+    String name;
     String time;
 
     public String getMovieName() {
@@ -27,14 +27,14 @@ public class MovieReview {
         this.review = review;
     }
 
-    public String getUser() {
+    public String getName() {
 
-        return user;
+        return name;
     }
 
-    public void setUser(String user) {
+    public void setName(String name) {
 
-        this.user = user;
+        this.name = name;
     }
 
     public String getTime() {

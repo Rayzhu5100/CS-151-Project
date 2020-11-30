@@ -36,6 +36,7 @@ public class MovieRankController implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
         name1.setText(movieArrayList.get(0).getName());
         name2.setText(movieArrayList.get(1).getName());
         name3.setText(movieArrayList.get(2).getName());
@@ -45,14 +46,14 @@ public class MovieRankController implements Initializable {
         name7.setText(movieArrayList.get(6).getName());
         name8.setText(movieArrayList.get(7).getName());
 
-        score1.setText(Float.toString(movieArrayList.get(0).getScore()));
-        score2.setText(Float.toString(movieArrayList.get(1).getScore()));
-        score3.setText(Float.toString(movieArrayList.get(2).getScore()));
-        score4.setText(Float.toString(movieArrayList.get(3).getScore()));
-        score5.setText(Float.toString(movieArrayList.get(4).getScore()));
-        score6.setText(Float.toString(movieArrayList.get(5).getScore()));
-        score7.setText(Float.toString(movieArrayList.get(6).getScore()));
-        score8.setText(Float.toString(movieArrayList.get(7).getScore()));
+        score1.setText(movieArrayList.get(0).getScore() +"/10");
+        score2.setText(movieArrayList.get(1).getScore() +"/10");
+        score3.setText(movieArrayList.get(2).getScore() +"/10");
+        score4.setText(movieArrayList.get(3).getScore() +"/10");
+        score5.setText(movieArrayList.get(4).getScore() +"/10");
+        score6.setText(movieArrayList.get(5).getScore() +"/10");
+        score7.setText(movieArrayList.get(6).getScore() +"/10");
+        score8.setText(movieArrayList.get(7).getScore() +"/10");
 
         voters1.setText(Integer.toString(movieArrayList.get(0).getVoters()));
         voters2.setText(Integer.toString(movieArrayList.get(1).getVoters()));

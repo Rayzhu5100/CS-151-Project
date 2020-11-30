@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class ViewCommentController implements Initializable {
-    String username,movieName,rank;
+    String username,movieName,rank,name;
     float Score;
     @FXML
     Label ScoreLabel,RankLabel,reviewerName,reviewTime,content,movieNameLabel;
@@ -64,7 +64,7 @@ public class ViewCommentController implements Initializable {
             e.printStackTrace();
         }
 
-        reviewerName.setText(movieReviewList.get(0).getUser());
+        reviewerName.setText(movieReviewList.get(0).getName());
         reviewTime.setText(movieReviewList.get(0).getTime());
         content.setText(movieReviewList.get(0).getReview());
 
@@ -81,7 +81,7 @@ public class ViewCommentController implements Initializable {
         while(queryResult.next()){
             MovieReview MovieReview = new MovieReview();
             MovieReview.setReview(queryResult.getString("review_content"));
-            MovieReview.setUser(queryResult.getString("user"));
+            MovieReview.setName(queryResult.getString("name"));
             MovieReview.setTime(queryResult.getString("time"));
             movieReviewArrayList.add(MovieReview);
         }

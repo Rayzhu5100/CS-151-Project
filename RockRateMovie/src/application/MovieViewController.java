@@ -23,7 +23,7 @@ import java.util.ResourceBundle;
 
 
 public class MovieViewController implements Initializable {
-    String username, movieName, rank;
+    String username, movieName, rank, ScoreToShow;
     Blob blob;
     float Score;
     int Voters;
@@ -46,11 +46,16 @@ public class MovieViewController implements Initializable {
             Image image = new Image(inputStream);
             movieImage.setImage(image);
 
+            if(MovieInfo.get(0).getScore() == 0){
+                ScoreLabel.setText("N/A");
+            }else{
+                ScoreLabel.setText(MovieInfo.get(0).getScore() + "/10");;
+            }
+
             YearLabel.setText(MovieInfo.get(0).getYear());
             DirectorLabel.setText(MovieInfo.get(0).getDirector());
             StarsLabel.setText(MovieInfo.get(0).getStars());
             StorylineLabel.setText(MovieInfo.get(0).getStoryline());
-            ScoreLabel.setText(MovieInfo.get(0).getScore() + "/10");
             RankLabel.setText("#" + MovieInfo.get(0).getRank());
 
             Score = MovieInfo.get(0).getScore();

@@ -27,7 +27,7 @@ import java.util.ResourceBundle;
 
 public class RatingController implements Initializable {
 
-    String username,movieName,comment;
+    String username,movieName,comment,Revewer;
     float enteredScore,Score,newScore;
     Blob blob;
     int voters,count=1;
@@ -46,6 +46,7 @@ public class RatingController implements Initializable {
         movieName = Session.INSTANCE.getMovieName();
         Score = Session.INSTANCE.getScore();
         voters = Session.INSTANCE.getVoters();
+        Revewer = Session.INSTANCE.getName();
         name.setText(movieName);
 
         blob = Session.INSTANCE.getImageBlob();
@@ -82,7 +83,7 @@ public class RatingController implements Initializable {
         comment = ReviewInput.getText();
         System.out.print("comment: "+comment);
         if(!comment.equals(""))
-            addComment(movieName, comment,username,timeStamp);
+            addComment(movieName, comment, Revewer, timeStamp);
     }
 
 
@@ -116,12 +117,12 @@ public class RatingController implements Initializable {
         }
     }
 
-    public void addComment(String moviename, String comment, String username, String timestamp){
+    public void addComment(String moviename, String comment, String name, String timestamp){
 
         DatabaseConnection connectNow = new DatabaseConnection();
         Connection connectDB = connectNow.getConnection();
 
-        String update = "insert into movie_comment(movie_name,review_content,user,time)values('"+moviename+"','"+comment+"','"+username+"','"+timestamp+"');";
+        String update = "insert into movie_comment(movie_name,review_content,name,time)values('"+moviename+"','"+comment+"','"+name+"','"+timestamp+"');";
 
         try{
             Statement statement= connectDB.createStatement();

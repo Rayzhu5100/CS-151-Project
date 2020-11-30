@@ -43,5 +43,9 @@ class Session{
         return (String)get("rank");
     }
 
+    public String getName(){
+        return (String)get("name");
+    }
+
 }
 
