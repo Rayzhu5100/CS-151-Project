@@ -53,7 +53,7 @@ public class CreateMovieController implements Initializable {
         window.show();
     }
 
-    public void createbuttonAction() throws IOException, SQLException {
+    public void createbuttonAction(ActionEvent actionEvent) throws IOException, SQLException, InterruptedException {
         movieNameInput = name.getText();
         yearInput = year.getText();
         DirectorInput = director.getText();
@@ -64,6 +64,8 @@ public class CreateMovieController implements Initializable {
             if (!checkIfMovieExist(movieNameInput)) {
                 storeMovieInfo();
                 Label.setText("Movie created success!");
+                Thread.sleep(3000);
+                viewCreatedMovie(actionEvent);
             } else {
                 Label.setText("Movie Already exist!");
             }
@@ -72,71 +74,82 @@ public class CreateMovieController implements Initializable {
         }
     }
 
+    public void viewCreatedMovie(ActionEvent actionEvent) throws IOException {
+        Session.INSTANCE.put("user",username);
+        Session.INSTANCE.put("movieName",movieNameInput);
+        Parent tableViewParent = FXMLLoader.load(getClass().getResource("MovieView.fxml"));
+        Scene tableViewScene = new Scene(tableViewParent);
+        Stage window = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
+        window.setScene(tableViewScene);
+        window.show();
+    }
 
-        public void uploadButtonAction () {
-            FileChooser fc = new FileChooser();
-            // if we want to open fixed location
-            //fc.setInitialDirectory(new File("D:\\\\Books"));
 
-            // if we want to fixed file extension
-            fc.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("JPG Files", "*.jpg"));
-            File selectedFile = fc.showOpenDialog(null);
 
-            if (selectedFile != null) {
-                path = selectedFile.getAbsolutePath();
-                pathLabel.setText(path);
-            } else {
-                System.out.println("File is not valid!");
+    public void uploadButtonAction () {
+        FileChooser fc = new FileChooser();
+        // if we want to open fixed location
+        //fc.setInitialDirectory(new File("D:\\\\Books"));
+
+        // if we want to fixed file extension
+        fc.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("JPG Files", "*.jpg"));
+        File selectedFile = fc.showOpenDialog(null);
+
+        if (selectedFile != null) {
+            path = selectedFile.getAbsolutePath();
+            pathLabel.setText(path);
+        } else {
+            System.out.println("File is not valid!");
+        }
+    }
+
+
+    public void storeMovieInfo () throws IOException, SQLException {
+
+        PreparedStatement statement;
+        DatabaseConnection connectNow = new DatabaseConnection();
+
+        Connection conn = connectNow.getConnection();
+
+        byte[] bytearray = convertFileContentToBlob(path);
+        String query = "INSERT INTO movie_info VALUES(?,?,?,?,?,?,?,?);";
+        statement = (PreparedStatement) conn.prepareStatement(query);
+        statement.setString(1, movieNameInput);
+        statement.setString(2, yearInput);
+        statement.setString(3, DirectorInput);
+        statement.setString(4, StarsInput);
+        statement.setString(5, StorylineInput);
+        statement.setBytes(6, bytearray);
+        statement.setString(7, null);
+        statement.setString(8, null);
+        statement.execute();
+    }
+
+    /**
+     * Check if the Movie is already taken
+     * @param movieName movieName
+     * @return return true if duplicate, return false if not duplicate.
+     */
+    public boolean checkIfMovieExist(String movieName){
+        DatabaseConnection connectNow = new DatabaseConnection();
+        Connection connectDB = connectNow.getConnection();
+
+        String verifyLogin = "SELECT name from movie_info WHERE name='" + movieName+ "'";
+
+        try {
+
+            Statement statement = connectDB.createStatement();
+            ResultSet queryResult = statement.executeQuery(verifyLogin);
+
+            if(queryResult.next()) {
+                return true;
             }
+        }catch(Exception e) {
+            e.printStackTrace();
+            e.getCause();
         }
-
-
-        public void storeMovieInfo () throws IOException, SQLException {
-
-            PreparedStatement statement;
-            DatabaseConnection connectNow = new DatabaseConnection();
-
-            Connection conn = connectNow.getConnection();
-
-            byte[] bytearray = convertFileContentToBlob(path);
-            String query = "INSERT INTO movie_info VALUES(?,?,?,?,?,?,?,?);";
-            statement = (PreparedStatement) conn.prepareStatement(query);
-            statement.setString(1, movieNameInput);
-            statement.setString(2, yearInput);
-            statement.setString(3, DirectorInput);
-            statement.setString(4, StarsInput);
-            statement.setString(5, StorylineInput);
-            statement.setBytes(6, bytearray);
-            statement.setString(7, null);
-            statement.setString(8, null);
-            statement.execute();
-        }
-
-        /**
-         * Check if the Movie is already taken
-         * @param movieName movieName
-         * @return return true if duplicate, return false if not duplicate.
-         */
-        public boolean checkIfMovieExist(String movieName){
-            DatabaseConnection connectNow = new DatabaseConnection();
-            Connection connectDB = connectNow.getConnection();
-
-            String verifyLogin = "SELECT name from movie_info WHERE name='" + movieName+ "'";
-
-            try {
-
-                Statement statement = connectDB.createStatement();
-                ResultSet queryResult = statement.executeQuery(verifyLogin);
-
-                if(queryResult.next()) {
-                    return true;
-                }
-            }catch(Exception e) {
-                e.printStackTrace();
-                e.getCause();
-            }
-            return false;
-        }
+        return false;
+    }
 
     public static byte[] convertFileContentToBlob(String filePath) throws IOException {
         // create file object
