@@ -62,17 +62,32 @@
             <Font name="Arial Black" size="42.0" />
          </font>
       </Label>
-      <Label fx:id="reviewerName" layoutX="606.0" layoutY="196.0" prefHeight="23.0" prefWidth="291.0" textFill="#ffbf00">
+      <Label fx:id="reviewerName" layoutX="702.0" layoutY="187.0" prefHeight="23.0" prefWidth="291.0" textFill="#e0a400">
          <font>
             <Font name="Arial Black" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="reviewTime" layoutX="606.0" layoutY="228.0" prefHeight="23.0" prefWidth="269.0" textFill="#ffbf00">
+      <Label fx:id="reviewTime" layoutX="702.0" layoutY="227.0" prefHeight="23.0" prefWidth="291.0" textFill="#e0a400">
          <font>
             <Font name="Arial Black" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="content" alignment="TOP_LEFT" layoutX="606.0" layoutY="258.0" prefHeight="341.0" prefWidth="505.0" textFill="#ffbf00" wrapText="true">
+      <Label fx:id="content" alignment="TOP_LEFT" layoutX="702.0" layoutY="264.0" prefHeight="304.0" prefWidth="390.0" textFill="#e0a400" wrapText="true">
+         <font>
+            <Font name="Arial Black" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="595.0" layoutY="188.0" text="Reviewer:" textFill="#ffbf00">
+         <font>
+            <Font name="Arial Black" size="15.0" />
+         </font>
+      </Label>
+      <Label alignment="TOP_RIGHT" layoutX="595.0" layoutY="227.0" prefHeight="23.0" prefWidth="82.0" text="Date:" textAlignment="RIGHT" textFill="#ffbf00">
+         <font>
+            <Font name="Arial Black" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="595.0" layoutY="264.0" text="Comment:" textFill="#ffbf00">
          <font>
             <Font name="Arial Black" size="15.0" />
          </font>

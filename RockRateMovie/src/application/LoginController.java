@@ -10,11 +10,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -35,8 +32,6 @@ public class LoginController implements Initializable {
 	private TextField enterPasswordField;
 	@FXML
 	private Label loginMessageLabel;
-	@FXML
-	private ImageView im;
 
 	/**
 	 * Click username and password text field, if any of them are not empty call validate the data

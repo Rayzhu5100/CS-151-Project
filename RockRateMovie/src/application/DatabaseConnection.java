@@ -1,10 +1,8 @@
 package application;
 
 
-import com.mysql.jdbc.PreparedStatement;
-
-import java.sql.*;
-import java.util.ArrayList;
+import java.sql.Connection;
+import java.sql.DriverManager;
 
 /**
  * Connect to AWS MySql database

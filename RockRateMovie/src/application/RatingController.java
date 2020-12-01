@@ -70,7 +70,7 @@ public class RatingController implements Initializable {
 
             if (enteredScore <= 0 || enteredScore <= 10) {
                 newScore = getAvgScore(Score, enteredScore, voters);
-                newScore = (float) Math.round(newScore * 10) / 10;
+                newScore = round(newScore);
                 updateMovieScore(movieName, newScore, voters);
                 Label.setText("Rate successful!");
             } else {
@@ -81,7 +81,7 @@ public class RatingController implements Initializable {
         }
 
         comment = ReviewInput.getText();
-        System.out.print("comment: "+comment);
+
         if(!comment.equals(""))
             addComment(movieName, comment, Revewer, timeStamp);
     }
@@ -160,5 +160,9 @@ public class RatingController implements Initializable {
             }
         }
         return true;
+    }
+
+    public float round(float a){
+        return (float) Math.round(a * 10) / 10;
     }
 }
