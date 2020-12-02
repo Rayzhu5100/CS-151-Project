@@ -14,7 +14,7 @@ public class DatabaseConnection {
 		String databaseName = "RockRateMovie";
 		String databaseUser = "admin";
 		String databasePassword= "password";
-		String url = "jdbc:mysql://rockratemovie.czanuyerjjgh.us-east-1.rds.amazonaws.com/";
+		String url = "jdbc:mysql://rockratemovie1.czanuyerjjgh.us-east-1.rds.amazonaws.com/";
 		
 		try {
 			Class.forName("com.mysql.jdbc.Driver");

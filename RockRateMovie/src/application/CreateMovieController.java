@@ -64,7 +64,6 @@ public class CreateMovieController implements Initializable {
             if (!checkIfMovieExist(movieNameInput)) {
                 storeMovieInfo();
                 Label.setText("Movie created success!");
-                Thread.sleep(3000);
                 viewCreatedMovie(actionEvent);
             } else {
                 Label.setText("Movie Already exist!");

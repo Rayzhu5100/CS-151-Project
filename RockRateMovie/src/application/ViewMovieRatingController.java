@@ -58,7 +58,7 @@ public class ViewMovieRatingController implements Initializable {
             DatabaseConnection connectNow = new DatabaseConnection();
             Connection connectDB = connectNow.getConnection();
 
-            String verifyLogin = "SELECT * from movie_info WHERE name='" + searchtext + "';";
+            String verifyLogin = "SELECT * from movie_info WHERE name like'" + searchtext + "';";
 
             try {
 
