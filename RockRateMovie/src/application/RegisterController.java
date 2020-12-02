@@ -75,7 +75,7 @@ public class RegisterController {
 
         String username = usernameInput.getText();
         String password = passwordInput.getText();
-        String name = usernameInput.getText();
+        String name = NameInput.getText();
         String email = EmailInput.getText();
 
         //connect database
