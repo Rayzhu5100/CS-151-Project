@@ -24,8 +24,11 @@ public class MovieRankController implements Initializable {
     String username;
     @FXML
     Label name1, name2, name3, name4, name5, name6, name7, name8;
+    @FXML
     Label score1, score2, score3, score4, score5, score6, score7, score8;
+    @FXML
     Label voters1, voters2, voters3, voters4, voters5, voters6, voters7, voters8;
+    @FXML
     Label rank1, rank2, rank3, rank4, rank5, rank6, rank7, rank8;
 
     ArrayList<movie> movieArrayList = new ArrayList<>();
